@@ -1,8 +1,8 @@
 # Phobal's Blog
 
 ## 技术
-- [swagger 转 typescript 的一些思考](https://github.com/phobal/blog/issues/3)
 - [TS 类型体操 - NumberRange](https://github.com/phobal/blog/issues/4)
+- [swagger 转 typescript 的一些思考](https://github.com/phobal/blog/issues/3)
 - [用 Charles 模拟网络异常](https://zhuanlan.zhihu.com/p/343491275)
 - [用 styled-components 对第三方组件进行设置条件属性的问题](https://zhuanlan.zhihu.com/p/299151871)
 - [为啥 useState 返回的是 array 而不是 object 呢？](https://zhuanlan.zhihu.com/p/268537903)
