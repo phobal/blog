@@ -22,5 +22,3 @@
 - [聊聊 ESLint](https://slides.com/bofeng/deck-0bc0c4)
 - [聊聊前端包管理器](https://slides.com/bofeng/npm-vs-yarn)
 
-## 其它
-- [2022年了为啥才弄个人博客？](https://github.com/phobal/blog/issues/1)
