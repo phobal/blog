@@ -1,0 +1,60 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Phobal 的博客', description = '关于前端、工具与日常实践的文字。' } = Astro.props;
+const pageTitle = title === 'Phobal 的博客' ? title : `${title} · Phobal 的博客`;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f7f4" />
+    <title>{pageTitle}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="Phobal 的博客首页"><span class="brand-mark">P<span>.</span></span><span class="brand-name">Phobal</span></a>
+        <nav aria-label="主导航">
+          <a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>文章</a>
+          <a href="/about/" aria-current={Astro.url.pathname === '/about/' ? 'page' : undefined}>关于</a>
+          <a href="https://github.com/phobal" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </nav>
+      </header>
+      <main><slot /></main>
+      <footer class="site-footer">
+        <span>© {new Date().getFullYear()} Phobal</span>
+        <span>用 Astro 与 Markdown 写作</span>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; color: #232421; background: #f8f7f4; font-synthesis: none; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid #a64f32; outline-offset: 4px; border-radius: 2px; }
+  ::selection { background: #e9d1c1; }
+  .site-shell { max-width: 860px; min-height: 100vh; margin: 0 auto; padding: 0 36px; display: flex; flex-direction: column; }
+  .site-header { height: 108px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e4e0d9; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 650; letter-spacing: -.03em; }
+  .brand-mark { width: 35px; height: 35px; background: #242622; color: #fff; display: grid; place-items: center; border-radius: 7px; font-size: 18px; letter-spacing: -.08em; padding-right: 2px; }
+  .brand-mark span { color: #d59a79; }
+  .brand-name { font-size: 17px; }
+  .site-header nav { display: flex; align-items: center; gap: 30px; }
+  .site-header nav a { font-size: 13px; text-decoration: none; color: #696a64; transition: color .2s ease; }
+  .site-header nav a:hover, .site-header nav a[aria-current="page"] { color: #a64f32; }
+  main { flex: 1; }
+  .site-footer { min-height: 116px; border-top: 1px solid #e4e0d9; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #92938d; }
+  @media (max-width: 600px) { .site-shell { padding: 0 22px; } .site-header { height: 82px; } .site-header nav { gap: 18px; } .brand-name { display: none; } .site-footer { min-height: 90px; gap: 16px; } }
+</style>

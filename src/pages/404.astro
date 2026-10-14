@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="页面不存在">
+  <section class="missing"><p>404</p><h1>这里没有这篇文章。</h1><a href="/">返回首页 →</a></section>
+</BaseLayout>
+<style>
+  .missing { padding: 120px 0 180px; }
+  .missing p { color: #a64f32; font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+  .missing h1 { font-size: clamp(34px, 6vw, 52px); letter-spacing: -.05em; }
+  .missing a { display: inline-block; margin-top: 24px; color: #a64f32; font-size: 14px; text-decoration: none; }
+</style>

@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPublishedPosts, formatDate } from '../lib/posts';
+import { externalArticles, talks } from '../data/links';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout>
+  <section class="intro">
+    <p class="eyebrow"><span class="status-dot"></span> 个人博客 / NOTES & IDEAS</p>
+    <h1>你好，我是 Phobal<span class="period">.</span></h1>
+    <p class="intro-copy">这里记录关于前端开发、工具，以及一些值得留下的思考。<br class="desktop-break" />慢慢写，认真分享。</p>
+  </section>
+
+  <section class="section" aria-labelledby="posts-title">
+    <div class="section-head"><h2 id="posts-title">文章</h2><span>{String(posts.length).padStart(2, '0')} 篇</span></div>
+    <div class="post-list">
+      {posts.map((post) => <a class="post-row" href={`/blog/${post.id}/`}>
+        <div class="post-main"><h3>{post.data.title}</h3><p>{post.data.description}</p></div>
+        <div class="post-meta"><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time><span aria-hidden="true">↗</span></div>
+      </a>)}
+    </div>
+  </section>
+
+  <section class="section external" aria-labelledby="external-title">
+    <div class="section-head"><h2 id="external-title">旧文存档</h2><span>知乎原文</span></div>
+    <p class="section-note">这些文章暂时保留原站入口；取得正文导出后会迁入本站。</p>
+    <div class="compact-list">
+      {externalArticles.map((item) => <a href={item.url} target="_blank" rel="noopener noreferrer"><span>{item.title}</span><span class="compact-meta">{item.category} <span aria-hidden="true">↗</span></span></a>)}
+    </div>
+  </section>
+
+  <section class="section talks" aria-labelledby="talks-title">
+    <div class="section-head"><h2 id="talks-title">技术分享</h2><span>Slides</span></div>
+    <div class="compact-list">
+      {talks.map((item) => <a href={item.url} target="_blank" rel="noopener noreferrer"><span>{item.title}</span><span class="compact-meta" aria-hidden="true">↗</span></a>)}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro { padding: 93px 0 91px; }
+  .eyebrow { color: #9a6b52; font-size: 11px; font-weight: 700; letter-spacing: .16em; display: flex; align-items: center; gap: 10px; margin: 0 0 24px; }
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #b67a56; }
+  h1 { font-size: clamp(42px, 7vw, 68px); line-height: 1.2; letter-spacing: -.065em; margin: 0; font-weight: 650; }
+  .period { color: #ad6846; }
+  .intro-copy { color: #777873; font-size: 16px; line-height: 2; margin: 23px 0 0; }
+  .section { margin-bottom: 84px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid #c9c8c1; }
+  .section-head h2 { margin: 0; font-size: 20px; letter-spacing: -.03em; font-weight: 650; }
+  .section-head span { color: #a4a39c; font-size: 12px; }
+  .post-row { display: flex; justify-content: space-between; gap: 24px; padding: 26px 0 27px; border-bottom: 1px solid #e8e5df; text-decoration: none; }
+  .post-main h3 { font-size: 17px; line-height: 1.5; font-weight: 600; letter-spacing: -.02em; margin: 0; transition: color .2s ease; }
+  .post-row:hover h3, .compact-list a:hover { color: #a64f32; }
+  .post-main p { color: #858681; font-size: 13px; line-height: 1.65; margin: 8px 0 0; }
+  .post-meta { min-width: 116px; padding-top: 4px; display: flex; justify-content: space-between; gap: 14px; color: #aaa9a2; font-size: 12px; white-space: nowrap; }
+  .post-meta span { font-size: 17px; line-height: .8; }
+  .section-note { color: #92918a; font-size: 13px; margin: 20px 0 2px; }
+  .compact-list a { display: flex; justify-content: space-between; gap: 28px; padding: 17px 0; border-bottom: 1px solid #e8e5df; text-decoration: none; font-size: 14px; line-height: 1.5; transition: color .2s ease; }
+  .compact-meta { flex-shrink: 0; color: #a4a39c; font-size: 12px; }
+  .compact-meta span { margin-left: 12px; }
+  .talks { margin-bottom: 100px; }
+  @media (max-width: 600px) { .intro { padding: 76px 0 79px; } .desktop-break { display: none; } .section { margin-bottom: 70px; } .post-row { display: block; padding: 23px 0; } .post-meta { justify-content: flex-start; margin-top: 13px; } .post-meta span { display: none; } .compact-list a { gap: 14px; } }
+</style>

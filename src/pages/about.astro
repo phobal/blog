@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="关于" description="关于 Phobal 和这个博客。">
+  <section class="about">
+    <p class="eyebrow">ABOUT</p>
+    <h1>关于这里<span>.</span></h1>
+    <div class="content">
+      <p>你好，我是 Phobal。这个博客用来记录前端开发中的实践、问题与思考，也收藏过去写过的文章和技术分享。</p>
+      <p>文章以 Markdown 保存。新的想法可以从一个普通的 <code>.md</code> 文件开始，慢慢写成完整的文章。</p>
+      <p>你可以在 <a href="https://github.com/phobal" target="_blank" rel="noopener noreferrer">GitHub ↗</a> 找到我。</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about { padding: 101px 0 170px; }
+  .eyebrow { color: #9a6b52; letter-spacing: .18em; font-size: 12px; font-weight: 700; margin: 0 0 21px; }
+  h1 { font-size: clamp(40px, 6vw, 58px); letter-spacing: -.055em; margin: 0 0 40px; }
+  h1 span { color: #ad6846; }
+  .content { max-width: 600px; color: #62645e; font-size: 16px; line-height: 2.1; }
+  .content p { margin: 0 0 24px; }
+  .content a { color: #a64f32; text-underline-offset: 4px; }
+  .content code { background: #edeae3; border-radius: 3px; padding: .15em .4em; }
+  @media (max-width: 600px) { .about { padding: 80px 0 120px; } }
+</style>
