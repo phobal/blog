@@ -21,7 +21,7 @@ const { Content } = await render(post);
       <p>{post.data.description}</p>
     </header>
     <div class="article-body"><Content /></div>
-    {post.data.originalUrl && <div class="source">原文发布于 <a href={post.data.originalUrl} target="_blank" rel="noopener noreferrer">GitHub Issues ↗</a></div>}
+    {post.data.originalUrl && <div class="source">原文发布于 <a href={post.data.originalUrl} target="_blank" rel="noopener noreferrer">{new URL(post.data.originalUrl).hostname} ↗</a></div>}
     <div class="article-end"><a href="/">← 返回文章列表</a></div>
   </article>
 </BaseLayout>

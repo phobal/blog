@@ -26,7 +26,7 @@ npm run new -- "我的新文章"
 ## 旧文章迁移
 
 - 原仓库的 6 篇 GitHub Issues 已迁入 `src/content/blog/`，正文为 Markdown，文末保留原文链接。其中第 1 篇虽未列在原 README，但同样属于该博客的文章。
-- 原 README 中 9 篇知乎文章的正文目前无法从知乎读取，暂时在首页“旧文存档”保留原文链接，集中维护于 `src/data/links.ts`。拿到 Markdown 或 HTML 导出后，可以按上面的格式迁入内容目录，再从链接列表移除对应条目。
+- 原 README 中 9 篇知乎文章已从创作中心编辑器迁为 Markdown，文中 17 张图片也已保存到 `public/images/zhihu/`。日期采用创作中心展示的发布或最后编辑日期，文末保留原文链接。
 - 原 README 中的 4 个技术分享链接保留在首页“技术分享”。
 
 ## 部署
